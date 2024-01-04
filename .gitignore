@@ -1,2 +1,5 @@
 venv/
 db.sqlite3
+employee_management_system/config/__pycache__/
+employee_management_system/employee/__pycache__/
+employee_management_system/employee/migrations/__pycache__/
