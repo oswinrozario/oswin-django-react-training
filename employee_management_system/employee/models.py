@@ -1,5 +1,7 @@
 from django.db import models
 
+from company.models import Company
+
 # Employee model
 class Employee(models.Model):
   
@@ -19,6 +21,7 @@ class Employee(models.Model):
     ))
     date_of_birth = models.DateField()
     date_of_joining = models.DateField()
+    company=models.ForeignKey(Company, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.full_name} - {self.employee_id}"
