@@ -1,19 +1,12 @@
 from django.db import models
-
 from company.models import Company
 
-# Employee model
 class Employee(models.Model):
-  
-    # Personal Information
     full_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=50)
     address = models.CharField(max_length=200)
-    phone = models.CharField(max_length=15)  # Adjusted field length for international numbers
+    phone = models.CharField(max_length=15)
     about = models.TextField()
-
-    # Employment Information
-    # 
     position = models.CharField(max_length=50, choices=(
         ('Manager', 'Manager'),
         ('Software Developer', 'Software Developer'),

@@ -1,4 +1,3 @@
-# accounts/views.py
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -13,7 +12,6 @@ class UserLoginView(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
         refresh = RefreshToken.for_user(user)
-        
         return Response({
             'user_id': user.id,
             'username': user.username,
@@ -31,8 +29,9 @@ class UserRegistrationView(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         refresh = RefreshToken.for_user(user)
-        print(f"User data: {user}")
-
+        user.company = serializer.validated_data['company']
+        user.save()
+        refresh = RefreshToken.for_user(user)
         return Response({
             'user_id': user.id,
             'username': user.username,
