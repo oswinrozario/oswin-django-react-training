@@ -17,4 +17,4 @@ class Employee(models.Model):
     company=models.ForeignKey(Company, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.full_name} - {self.employee_id}"
+        return f"{self.full_name} - {self.id}"
